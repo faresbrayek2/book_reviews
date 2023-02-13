@@ -1,0 +1,72 @@
+<html>
+<body>
+<div class="container blogslist" *ngIf="blog">
+
+
+  <!-- /.col-lg-3 -->
+
+
+  <div class="row">
+
+    <div class="col-lg-12 col-md-12 mb-4">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="{{blog?.fileSource}}" alt=""></a>
+
+        <div class="card-body">
+          <h4 class="card-title">
+            <a>{{blog.title}}</a>
+
+          </h4>
+          <p [innerHTML]="blog.content"></p>
+
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+  <!-- /.row -->
+  <hr class="">
+
+</div>
+<form [formGroup]="form">
+
+  <app-comments-child [id]="id" [form]="form"></app-comments-child>
+
+</form>
+<br><br>
+<br><br>
+<div class="container">
+  <div class="comment-box">
+          <span class="commenter-pic">
+            <img src="../../../assets/user-male.png" class="img-fluid ihatecss">
+          </span>
+    <span class="commenter-name">
+            <a href="">{{form.value.name}}</a> <span class="comment-time"> </span>
+          </span>
+    <p class="comment-txt more">{{form.value.content}}</p>
+    <div class="comment-meta">
+    </div>
+  </div>
+
+  <div *ngFor="let cm of cmnts">
+    <div *ngIf="cm.blogid == id">
+
+      <div class="comment-box">
+          <span class="commenter-pic">
+            <img src="../../../assets/user-male.png" class="img-fluid ihatecss">
+          </span>
+        <span class="commenter-name">
+            <a href="">{{cm.name}}</a> <span class="comment-time"> </span>
+          </span>
+        <p class="comment-txt more">{{cm.content}}</p>
+        <div class="comment-meta">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>
